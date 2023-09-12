@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Adminroot" prefHeight="319.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CarHire.controller.AdminFormController">
+   <children>
+      <Label layoutX="101.0" layoutY="21.0" text="Admin" textFill="#420dd3">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="65.0" text="Admin Username">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="88.0" layoutY="131.0" text="Admin Password">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="AdminUname" layoutX="29.0" layoutY="84.0" prefHeight="32.0" prefWidth="214.0" />
+      <PasswordField fx:id="AdminPw" layoutX="29.0" layoutY="150.0" prefHeight="32.0" prefWidth="214.0" />
+      <Button layoutX="29.0" layoutY="198.0" mnemonicParsing="false" onAction="#CreateAccOnAction" opacity="0.78" prefHeight="44.0" prefWidth="214.0" style="-fx-background-color: #0e6dcd;" text="User Account Manage" textFill="#110000">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="29.0" layoutY="255.0" mnemonicParsing="false" onAction="#LoginAction" opacity="0.78" prefHeight="44.0" prefWidth="214.0" style="-fx-background-color: #f7192c;" text="&lt; Login" textFill="#111010">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
