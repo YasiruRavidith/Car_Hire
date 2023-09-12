@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Carhireroot" prefHeight="680.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CarHire.controller.CarHireFormController">
+<AnchorPane fx:id="Carhireroot" prefHeight="697.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CarHire.controller.CarHireFormController">
    <children>
       <Button cache="true" contentDisplay="TOP" ellipsisString="" graphicTextGap="0.0" layoutX="31.0" layoutY="29.0" mnemonicParsing="false" onAction="#CategoryActionButton" prefHeight="70.0" prefWidth="125.0" text="Categories">
          <font>
@@ -64,7 +64,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="RIGHT" layoutX="31.0" layoutY="610.0" mnemonicParsing="false" onAction="#ActiononLogout" prefHeight="41.0" prefWidth="125.0" text="Log out">
+      <Button layoutX="31.0" layoutY="625.0" mnemonicParsing="false" onAction="#ActiononLogout" prefHeight="41.0" prefWidth="125.0" text="Log out">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -76,6 +76,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane fx:id="CarHire_Panelroot" layoutX="164.0" layoutY="29.0" prefHeight="624.0" prefWidth="566.0" />
+      <AnchorPane fx:id="CarHire_Panelroot" layoutX="164.0" layoutY="29.0" prefHeight="652.0" prefWidth="751.0" />
    </children>
 </AnchorPane>
