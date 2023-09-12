@@ -63,7 +63,7 @@
       <TableView fx:id="Catogarytable" layoutX="29.0" layoutY="301.0" prefHeight="325.0" prefWidth="692.0">
         <columns>
           <TableColumn fx:id="CatIdColmn" prefWidth="217.0" text="Category ID" />
-          <TableColumn fx:id="CatNameColmn" prefWidth="317.0" text="Category Name" />
+          <TableColumn fx:id="CatNameColmn" prefWidth="474.0" text="Category Name" />
         </columns>
       </TableView>
       <Button layoutX="419.0" layoutY="70.0" mnemonicParsing="false" onAction="#buttonSerch" style="-fx-background-color: #b03bff;" text="Search">

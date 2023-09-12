@@ -77,6 +77,10 @@ public class CategoriesFormController {
         return categoriesList;
     }
     public void categorySearchOnAction(ActionEvent actionEvent) {
+        SeachbyAll();
+    }
+
+    public void SeachbyAll(){
         String id = serchcatogey.getText();
 
         try {
@@ -192,5 +196,9 @@ public class CategoriesFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public void buttonSerch(ActionEvent actionEvent) {
+        SeachbyAll();
     }
 }

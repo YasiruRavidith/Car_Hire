@@ -1,15 +1,15 @@
 package lk.ijse.CarHire.controller;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.CarHire.db.DbConnection;
 import lk.ijse.CarHire.dto.Categories;
 import lk.ijse.CarHire.dto.ManageCar;
+import lk.ijse.CarHire.dto.tm.CategoriesTm;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,9 +28,83 @@ public class ManagrCarFormController {
     @FXML
     private ComboBox<String> cartypeCombo;
 
+
+    @FXML
+    private TableColumn<?, ?> abiltycolmn;
+    @FXML
+    private TableColumn<?, ?> brandcolmn;
+    @FXML
+    private TableColumn<?, ?> caridcolmn;
+    @FXML
+    private TableColumn<?, ?> modelcolmn;
+    @FXML
+    private TableColumn<?, ?> ppdcolmn;
+    @FXML
+    private TableColumn<?, ?> typrcolmn;
+    @FXML
+    private TableColumn<?, ?> vehicalnumcolmn;
+    @FXML
+    private TableColumn<?, ?> yearcolmn;
+    @FXML
+    private TableView<ManageCar> carmnagtable;
+
     public  void initialize() throws SQLException {
         loadcombobox();
+        setCellValueFactory();
+        List<ManageCar> manageCarList = loadtable();
+
+        setTableData(manageCarList);
     }
+
+    private void setTableData(List<ManageCar> manageCarList) {
+        ObservableList<ManageCar> oblist = FXCollections.observableArrayList();
+
+        for (ManageCar manageCar:manageCarList) {
+            var tm = new ManageCar(manageCar.getIdCar(), manageCar.getBrand(),manageCar.getModel(),manageCar.getVehicle_Number(),manageCar.getYear(),manageCar.getPrice_per_day(),manageCar.getCategory_id(),manageCar.getAvailability());
+            oblist.add(tm);
+        }
+        carmnagtable.setItems(oblist);
+    }
+
+    private void setCellValueFactory() {
+        caridcolmn.setCellValueFactory(new PropertyValueFactory<>("idCar"));
+        brandcolmn.setCellValueFactory(new PropertyValueFactory<>("Brand"));
+        modelcolmn.setCellValueFactory(new PropertyValueFactory<>("Model"));
+        vehicalnumcolmn.setCellValueFactory(new PropertyValueFactory<>("Vehicle_Number"));
+        yearcolmn.setCellValueFactory(new PropertyValueFactory<>("year"));
+        ppdcolmn.setCellValueFactory(new PropertyValueFactory<>("Price_per_day"));
+        typrcolmn.setCellValueFactory(new PropertyValueFactory<>("category_id"));
+        abiltycolmn.setCellValueFactory(new PropertyValueFactory<>("availability"));
+
+
+    }
+
+    private List<ManageCar> loadtable() throws SQLException {
+
+        Connection con = DbConnection.getInstance().getConnection();
+
+        String sql= "SELECT * FROM car";
+        Statement stm = con.createStatement();
+        ResultSet resultSet = stm.executeQuery(sql);
+
+        List<ManageCar> manageCarList = new ArrayList<>();
+
+        while(resultSet.next()){
+            String idCar = resultSet.getString(1);
+            String Brand = resultSet.getString(2);
+            String Model = resultSet.getString(3);
+            String Vehicle_Number = resultSet.getString(4);
+            String year = resultSet.getString(5);
+            String Price_per_day = resultSet.getString(6);
+            String category_id = resultSet.getString(7);
+            String availability = resultSet.getString(8);
+
+            var manageCar = new ManageCar(idCar,Brand,Model,Vehicle_Number,year,Price_per_day,category_id,availability);
+            manageCarList.add(manageCar);
+        }
+        return manageCarList;
+    }
+
     private void loadcombobox() throws SQLException {
 
         Connection con = DbConnection.getInstance().getConnection();
@@ -50,6 +124,10 @@ public class ManagrCarFormController {
     }
 
     public void carSearchAction(ActionEvent actionEvent) {
+        serchbyall();
+    }
+
+    public void serchbyall(){
         String id = carsearch.getText();
 
         try {
@@ -83,7 +161,6 @@ public class ManagrCarFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
     }
     private void setFields(ManageCar manageCar) {
         this.caridtxt.setText(manageCar.getIdCar());
@@ -211,5 +288,9 @@ public class ManagrCarFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public void buttonSerch(ActionEvent actionEvent) {
+        serchbyall();
     }
 }
