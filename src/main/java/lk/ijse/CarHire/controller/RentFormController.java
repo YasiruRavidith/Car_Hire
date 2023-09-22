@@ -40,6 +40,7 @@ public class RentFormController {
     public Label brandtxt1;
     public Label caridtxt1;
     public AnchorPane rentanchor;
+    public ComboBox comboid;
 
 
     @FXML
@@ -62,6 +63,8 @@ public class RentFormController {
 
     public  void initialize() throws SQLException {
         setCellValueFactory();
+        loadcombobox();
+        comboid.setValue("All");
         loadthable();
 
         LocalDate maxDate = LocalDate.now().plusMonths(1);
@@ -103,12 +106,20 @@ public class RentFormController {
 
     private void setTableData(List<ManageCar> manageCarList) {
         String a ="Available";
+        String comb =comboid.getValue().toString();
         ObservableList<ManageCarTm> oblist = FXCollections.observableArrayList();
 
         for (ManageCar manageCar:manageCarList) {
-            if(a.equals(manageCar.getAvailability())){
-            var tm = new ManageCarTm(manageCar.getIdCar(), manageCar.getBrand(),manageCar.getModel(),manageCar.getVehicle_Number(),manageCar.getPrice_per_day(), manageCar.getCategory_id(), manageCar.getAvailability(), manageCar.getYear());
-            oblist.add(tm);
+            if( comb.equals(manageCar.getCategory_id())){
+                if(a.equals(manageCar.getAvailability())){
+                    var tm = new ManageCarTm(manageCar.getIdCar(), manageCar.getBrand(),manageCar.getModel(),manageCar.getVehicle_Number(),manageCar.getPrice_per_day(), manageCar.getCategory_id(), manageCar.getAvailability(), manageCar.getYear());
+                    oblist.add(tm);
+                }
+            } else if (comb.equals("All")) {
+                if(a.equals(manageCar.getAvailability())){
+                    var tm = new ManageCarTm(manageCar.getIdCar(), manageCar.getBrand(),manageCar.getModel(),manageCar.getVehicle_Number(),manageCar.getPrice_per_day(), manageCar.getCategory_id(), manageCar.getAvailability(), manageCar.getYear());
+                    oblist.add(tm);
+                }
             }
         }
         cartypeTable.setItems(oblist);
@@ -309,5 +320,32 @@ public class RentFormController {
 
         this.rentanchor.getChildren().clear();
         this.rentanchor.getChildren().add(root);
+    }
+
+    private void loadcombobox() throws SQLException {
+
+        Connection con = DbConnection.getInstance().getConnection();
+
+        String sql= "SELECT name FROM car_category";
+        Statement stm = con.createStatement();
+        ResultSet resultSet = stm.executeQuery(sql);
+
+        List<String> comboList = new ArrayList<>();
+
+        while(resultSet.next()){
+            String name = resultSet.getString(1);
+            comboList.add(name);
+        }
+        comboList.add("All");
+        comboid.setItems(FXCollections.observableArrayList(comboList));
+
+    }
+    public void ComboboxAction(ActionEvent actionEvent) throws SQLException {
+        loadthable();
+        Perdayrentlable.setText("");
+        caridtxt1.setText("");
+        brandtxt1.setText("");
+        modeltxt1.setText("");
+        cartypetxt.setText("");
     }
 }

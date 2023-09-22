@@ -119,6 +119,7 @@ public class ManagrCarFormController {
             String name = resultSet.getString(1);
             comboList.add(name);
         }
+
         cartypeCombo.setItems(FXCollections.observableArrayList(comboList));
 
     }

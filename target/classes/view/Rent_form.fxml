@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -30,7 +31,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Button layoutX="506.0" layoutY="258.0" mnemonicParsing="false" onAction="#ButnRent" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #9c4eee;" text="Rent" textFill="#171717">
+      <Button layoutX="592.0" layoutY="257.0" mnemonicParsing="false" onAction="#ButnRent" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #9c4eee;" text="Rent" textFill="#171717">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -75,10 +76,11 @@
       <Label fx:id="modeltxt1" layoutX="583.0" layoutY="210.0" prefHeight="17.0" prefWidth="68.0" />
       <Label fx:id="brandtxt1" layoutX="583.0" layoutY="190.0" prefHeight="17.0" prefWidth="68.0" />
       <Label fx:id="caridtxt1" layoutX="583.0" layoutY="170.0" prefHeight="17.0" prefWidth="68.0" />
-      <Button layoutX="594.0" layoutY="258.0" mnemonicParsing="false" onAction="#ButnRentedCars" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #ecee4b;" text="Rented Cars" textFill="#1b1a1a">
+      <Button layoutX="472.0" layoutY="257.0" mnemonicParsing="false" onAction="#ButnRentedCars" prefHeight="19.0" prefWidth="105.0" style="-fx-background-color: #5e6aee;" text="Rented Cars" textFill="#070707">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <ComboBox fx:id="comboid" layoutX="59.0" layoutY="247.0" onAction="#ComboboxAction" prefHeight="25.0" prefWidth="209.0" promptText="Select Car Type" />
    </children>
 </AnchorPane>
