@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import lk.ijse.CarHire.db.DbConnection;
 import lk.ijse.CarHire.dto.Register;
 import lk.ijse.CarHire.dto.tm.RegisterTm;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.sql.*;
@@ -28,6 +29,7 @@ public class RegisterFormController {
     public TextField Uidtxt;
     public TextField Umobile;
     public AnchorPane Registerroot;
+
 
     public TextField Searchidtxt;
 
@@ -54,6 +56,7 @@ public class RegisterFormController {
         List<Register> registerList = loadtable();
 
         setTableData(registerList);
+
 
     }
 
@@ -137,6 +140,9 @@ public class RegisterFormController {
 
     public void btnClear(ActionEvent actionEvent) {
         clear();
+        /*RegisterTm reg =tableUser.getSelectionModel().getSelectedItem();
+        System.out.println(reg.getId());*/
+
     }
 
     public void clear(){

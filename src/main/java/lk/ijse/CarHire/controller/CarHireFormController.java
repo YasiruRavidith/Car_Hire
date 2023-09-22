@@ -13,6 +13,13 @@ public class CarHireFormController {
     public AnchorPane Carhireroot;
     public AnchorPane CarHire_Panelroot;
 
+    public  void initialize() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/Categories_form.fxml"));
+
+        this.CarHire_Panelroot.getChildren().clear();
+        this.CarHire_Panelroot.getChildren().add(root);
+    }
+
     public void CategoryActionButton(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/Categories_form.fxml"));
 

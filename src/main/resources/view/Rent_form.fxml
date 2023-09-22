@@ -1,16 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CarHire.controller.RentFormController">
+<AnchorPane fx:id="rentanchor" prefHeight="652.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CarHire.controller.RentFormController">
    <children>
-      <Label layoutX="274.0" layoutY="14.0" text="Rent">
+      <Label layoutX="350.0" layoutY="32.0" text="Rent" textFill="#00c946">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <TextField fx:id="rentIdtxt" layoutX="58.0" layoutY="78.0" prefHeight="25.0" prefWidth="280.0" promptText="Rent ID" />
+      <DatePicker fx:id="datapickerId" layoutX="59.0" layoutY="147.0" onAction="#DatepickerOnaction" prefHeight="25.0" prefWidth="209.0" promptText="To" />
+      <TextField fx:id="atvansedtxt" layoutX="58.0" layoutY="111.0" prefHeight="25.0" prefWidth="280.0" promptText="Advanced Payment" />
+      <TextField fx:id="refundubletxt" layoutX="389.0" layoutY="111.0" prefHeight="25.0" prefWidth="280.0" promptText="Refundable Payment" />
+      <Label layoutX="58.0" layoutY="187.0" prefHeight="19.0" prefWidth="105.0" text="Per Day Rent : Rs">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="Perdayrentlable" layoutX="163.0" layoutY="187.0" prefHeight="19.0" prefWidth="64.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="506.0" layoutY="258.0" mnemonicParsing="false" onAction="#ButnRent" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #9c4eee;" text="Rent" textFill="#171717">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="Totallable" layoutX="113.0" layoutY="205.0" prefHeight="19.0" prefWidth="64.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="balunceLable" layoutX="128.0" layoutY="224.0" prefHeight="19.0" prefWidth="74.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="cartypeTable" layoutX="29.0" layoutY="296.0" onMouseClicked="#TableAction" prefHeight="342.0" prefWidth="695.0">
+         <columns>
+            <TableColumn fx:id="carIdtype" prefWidth="88.0" text="Car ID" />
+            <TableColumn fx:id="brandType" prefWidth="109.0" text="Brand" />
+            <TableColumn fx:id="modelType" prefWidth="107.0" text="Model" />
+            <TableColumn fx:id="VehiNumType" prefWidth="129.0" text="Vehicle Num" />
+            <TableColumn fx:id="PPDType" prefWidth="132.0" text="Price P. Day" />
+            <TableColumn fx:id="Cartypetype" prefWidth="132.0" text="Car Type" />
+         </columns>
+      </TableView>
+      <Label fx:id="cartypetxt" layoutX="583.0" layoutY="230.0" prefHeight="17.0" prefWidth="68.0" />
+      <Label fx:id="datapike_rlable" layoutX="285.0" layoutY="151.0" prefHeight="17.0" prefWidth="167.0" text="&lt; Select Date &gt;" />
+      <Label layoutX="58.0" layoutY="205.0" prefHeight="19.0" prefWidth="64.0" text="Total : Rs">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="224.0" text="Balance : Rs">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CustomerIdtxt1" layoutX="389.0" layoutY="78.0" prefHeight="25.0" prefWidth="280.0" promptText="Customer ID" />
+      <Label layoutX="524.0" layoutY="230.0" text="Car Type :" />
+      <Label layoutX="524.0" layoutY="210.0" text="Model :" />
+      <Label layoutX="524.0" layoutY="190.0" text="Brand :" />
+      <Label layoutX="524.0" layoutY="170.0" text="Car ID :" />
+      <Label fx:id="modeltxt1" layoutX="583.0" layoutY="210.0" prefHeight="17.0" prefWidth="68.0" />
+      <Label fx:id="brandtxt1" layoutX="583.0" layoutY="190.0" prefHeight="17.0" prefWidth="68.0" />
+      <Label fx:id="caridtxt1" layoutX="583.0" layoutY="170.0" prefHeight="17.0" prefWidth="68.0" />
+      <Button layoutX="594.0" layoutY="258.0" mnemonicParsing="false" onAction="#ButnRentedCars" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #ecee4b;" text="Rented Cars" textFill="#1b1a1a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
