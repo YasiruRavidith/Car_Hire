@@ -147,6 +147,7 @@ public class RentedCarsFormController {
     }
 
     public void TableAction(MouseEvent mouseEvent) throws ParseException {
+        datedeff.setText("");
         Rent get = CarRentTable.getSelectionModel().getSelectedItem();
         data(get);
     }
@@ -261,12 +262,33 @@ public class RentedCarsFormController {
             boolean isUpdate = pstm.executeUpdate() >0;
             if(isUpdate){
                 setAvailable();
+                clear();
                 new Alert(Alert.AlertType.CONFIRMATION, "go to setAvailable");
             }
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage());
         }
+    }
+
+    private void clear(){
+        rentidlable.setText("");
+        custidlable.setText("");
+        fromlable.setText("");
+        tolable.setText("");
+        advancedlable.setText("");
+        refundablelable.setText("");
+        ppdlable.setText("");
+        extratext.setText("");
+        extralabe.setText("");
+        totallable.setText("");
+        balancelable.setText("");
+        datedeff.setText("");
+        caridlable.setText("");
+        brandlable.setText("");
+        modellable.setText("");
+        vehicalnumberlable.setText("");
+        cartypelable.setText("");
     }
 
     private void setAvailable(){
@@ -295,14 +317,16 @@ public class RentedCarsFormController {
 
     public void buttonSerch(ActionEvent actionEvent) throws ParseException {
         String id = rentsearch.getText();
+        String rtrn ="No";
 
         try {
             Connection con = DbConnection.getInstance().getConnection();
 
-            String sql ="SELECT * FROM rent WHERE idRent=?";
+            String sql ="SELECT * FROM rent WHERE idRent=? AND is_retern=?";
 
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1,id);
+            pstm.setString(2,rtrn);
 
             ResultSet resultSet =pstm.executeQuery();
 
@@ -320,8 +344,11 @@ public class RentedCarsFormController {
                 String car_id = resultSet.getString(11);
                 String Extra = resultSet.getString(12);
 
+                datedeff.setText("");
+
                 var rent = new Rent(idRent,from_date,to_date,Advanced_payment,refundable_payment,is_retern,perDay_rent,Total,Balance,cust_id,car_id,Extra);
                 data(rent);
+
                 rentsearch.setText("");
             }else{
                 new Alert(Alert.AlertType.WARNING,"Rent ID not Found").show();

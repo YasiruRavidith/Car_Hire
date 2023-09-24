@@ -156,11 +156,12 @@ public class RentFormController {
         double total =days*Double.parseDouble(crty.getPrice_per_day());
 
         double bal =total-Double.parseDouble(atvansedtxt.getText());
+        Double extra= 0.00;
 
         try {
             Connection con = DbConnection.getInstance().getConnection();
 
-            String sql = "INSERT INTO rent VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO rent VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm = con.prepareStatement(sql);
 
             pstm.setString(1, idrent);
@@ -174,6 +175,7 @@ public class RentFormController {
             pstm.setDouble(9, bal);
             pstm.setString(10, cutid);
             pstm.setString(11, caridrent);
+            pstm.setDouble(12,extra);
 
             boolean isSaved = pstm.executeUpdate() > 0;
 
