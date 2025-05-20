@@ -1,4 +1,5 @@
 package lk.ijse.CarHire;
+package lk.ijse.CarHire;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
